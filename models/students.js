@@ -24,3 +24,12 @@ module.exports.enrolNewStudent = function enrolNewStudent(adminNumber, studentNa
             throw error;
         });
 };
+
+module.exports.retrieveAll = function retrieveAll() {
+// retrieve students via stored procedure
+const sql = `SELECT adm_no, stud_name, gender, crse_code, gpa, gpa_last_updated
+FROM student`;
+return query(sql).then(function (result) {
+return result.rows;
+});
+};
